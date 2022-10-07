@@ -94,10 +94,11 @@ function MovieList() {
     return (
         <div className = "container">
             
-            <h1 className = "text-center"> Movies List</h1>
+            <h1 className = "text-center titre1"> Movies List</h1>
             <div className="App">
   
             <div className="container">
+              <div className="center">
       <input
         type="search"
         value={title}
@@ -105,40 +106,44 @@ function MovieList() {
         className="input"
         placeholder="Filter"
       />
-      
+      </div>
       
   </div>
-            <table className = "table table-striped">
-                <thead>
-                    <tr>
-                        <th> Title </th>
-                        <th> Description</th>
-                        <th> posterURL</th>
-                        <th>Rating</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                    
-                    {foundUsers && foundUsers.length > 0 ? (
+  {foundUsers && foundUsers.length > 0 ? (
                         foundUsers.map((user) => (
+  <div className='container '>
+        <div className="row">
+            
+                <div className="card " >
+        
+                    <div className="card-Body">
+                  
+                      <h1 className="card-Text " >{user.title}</h1>
+          
+                    
+                      <p className="card-Text" > {user.description }</p>
+                      <p className="card-Text" >{user.posterURL }</p>
+                      <p className="card-Text" > {user.rating} </p>
+                  
+        
+                    </div>
+                 
+            </div>
+           
+        </div>
+        
+        </div> 
+                    
+                  
                            
-                                <tr key = {user.id}>
-                                    <td> {user.title }</td>
-                                    <td> {user.description }</td>
-                                    <td> {user.posterURL }</td>
-                                    <td> {user.rating}</td>    
-                                    
-
-                                </tr>
+                              
 
                         ))
                         ) : (
                             <h1>No results found!</h1>
                            
      ) }
-        </tbody>
-        </table>       
+              
   </div>
           
         
@@ -162,14 +167,14 @@ function MovieList() {
         type="text"
         name="posterURL"
         required="required"
-        placeholder="Enter a URL..."
+        placeholder="Enter an URL..."
         onChange={handleAddFormChange}
       />
       <input
         type="text"
         name="rating"
         required="required"
-        placeholder="Enter a rationg..."
+        placeholder="Enter a rating..."
         onChange={handleAddFormChange}
       />
       <button type="submit">Add</button>
